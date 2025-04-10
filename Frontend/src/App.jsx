@@ -1,9 +1,27 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Index from "./components/page/Index";
+import SignIn from "./components/page/SignIn";
+import User from "./components/page/User";
+
+import "./assets/style/main.css";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Index />,
+  },
+  {
+    path: "/sign-in",
+    element: <SignIn />,
+  },
+  {
+    path: "/user",
+    element: <User />,
+  },
+]);
+
 function App() {
-  return (
-    <div>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque vitae saepe rerum laboriosam quasi doloremque. Unde quasi sed nesciunt saepe fuga odio. Quis consectetur cupiditate deleniti doloribus dolor alias ipsa.</p>
-    </div>
-  )
+  return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;
