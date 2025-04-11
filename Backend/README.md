@@ -52,6 +52,14 @@ Once you run the `populate-db` script, you should have two users in your databas
 - Email: `tony@stark.com`
 - Password: `password123`
 
+{
+  "email": "tony@stark.com",
+  "password": "password123",
+  "firstName": "Tony",
+  "lastName": "Stark",
+  "userName": "Tony"
+}
+
 ### Steve Rogers
 
 - First Name: `Steve`,

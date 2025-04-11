@@ -1,17 +1,22 @@
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setToken } from "../../store/userSlice";
 import { useRef } from "react";
 
-import Footer from "../structures/Footer";
 import Header from "../structures/Header";
+import Footer from "../structures/Footer";
 
 export default function SignIn() {
+  const dispatch = useDispatch();
   const emailRef = useRef();
   const passwordRef = useRef();
+  const navigate = useNavigate()
 
   async function Login(e) {
     e.preventDefault();
 
     const login = {
-      email: emailRef.current.value,  // correspond à ce que ton backend attend
+      email: emailRef.current.value,
       password: passwordRef.current.value,
     };
 
@@ -24,12 +29,14 @@ export default function SignIn() {
       body: JSON.stringify(login),
     });
 
-    if (!response.ok) {
-      alert("Email/Mot de passe incorrect. Veuillez réessayer ")
+    if (response.ok) {
+      const replogin = await response.json();
+      const { token } = replogin.body;
+      dispatch(setToken(token));
+      navigate("/user")
+    } else {
+      alert("Email/Mot de passe incorrect. Veuillez réessayer");
     }
-    const data = await response.json();
-    window.location.href = "./user";
-    console.log(data);
   }
 
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./redux/store";
+import {store} from './store/store'; 
 
 import Index from "./components/page/Index";
 import SignIn from "./components/page/SignIn";
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <Provider store={store}>
+    <Provider store={store}>  {/* Passage du store au Provider */}
       <RouterProvider router={router} />
     </Provider>
   );

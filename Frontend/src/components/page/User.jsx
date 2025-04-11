@@ -1,7 +1,16 @@
+// Créer la modal edit name et l'associer au click
+// Créer le Profil et le Sign Out
+// Relier 
+
+import { useSelector } from "react-redux";
+
 import Header from "../structures/Header";
 import Footer from "../structures/Footer";
 
 export default function User() {
+  const token = useSelector((state) => state.user.token);
+
+  console.log("Token récupéré depuis Redux : ", token);
   return (
     <>
       <Header />
