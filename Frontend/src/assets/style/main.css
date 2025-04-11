@@ -38,8 +38,9 @@ html {
   .main-nav {
     display: flex;
     justify-content: space-between;
+    gap: 5px;
     align-items: center;
-    padding: 5px 20px;
+    margin-right: 0.5rem;
   }
   
   .main-nav a {
@@ -52,11 +53,11 @@ html {
   }
   
   .main-nav-item {
+    padding: 0;
     text-decoration: none;
-    margin-right: 0.5rem;
   }
   
-  .main-nav-item:hover {
+  .main-nav-item:hover p {
     text-decoration: underline;
   }
   
@@ -69,7 +70,7 @@ html {
     max-width: 100%;
     width: 200px;
   }
-  
+
   .hero {
     background-image: url('../../assets//img/bank-tree.webp');
     background-position: 0 -50px;
@@ -289,4 +290,36 @@ html {
       width: 200px;
     }
   }
+  
+  /* Editname */
+  .displayNone{
+    display: none;
+  }
+  
+  form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+  form div{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+  }
+.editName form input{
+  width: 100px;
+  border: 0;
+  border-radius: 3px;
+}
+.firstName input, .lastName input {
+  color: white;
+}
+.editName button{
+  width: 94px;
+  margin: 2.5px;
+  border: 0;
+  border-radius: 3px;
+  margin-top: 20px;
+}
   

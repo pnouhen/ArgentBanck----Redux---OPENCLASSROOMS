@@ -1,14 +1,15 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+
 import Header from "../structures/Header";
+import EditName from "../ui/EditName";
 import Footer from "../structures/Footer";
-import { useEffect } from "react";
 
 export default function User() {
   const token = useSelector((state) => state.user.token);
   const navigate = useNavigate();
-  console.log("Token is in User", token);
-
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (!token) {
@@ -24,12 +25,20 @@ export default function User() {
       <Header />
       <main className="main bg-dark">
         <div className="header">
-          <h1>
-            Welcome back
-            <br />
-            Tony Jarvis!
-          </h1>
-          <button className="edit-button">Edit Name</button>
+          {open == false ? (
+            <>
+              <h1>
+                Welcome back
+                <br />
+                Tony Jarvis!
+              </h1>
+              <button className="edit-button" onClick={() => setOpen(!open)}>
+                Edit Name
+              </button>
+            </>
+          ) : (
+            <EditName open={open} setOpen={setOpen} />
+          )}
         </div>
         <h2 className="sr-only">Accounts</h2>
         <section className="account">
