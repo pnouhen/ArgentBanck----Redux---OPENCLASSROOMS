@@ -1,16 +1,24 @@
-// Créer la modal edit name et l'associer au click
-// Créer le Profil et le Sign Out
-// Relier 
-
 import { useSelector } from "react-redux";
-
+import { useNavigate } from "react-router-dom";
 import Header from "../structures/Header";
 import Footer from "../structures/Footer";
+import { useEffect } from "react";
 
 export default function User() {
   const token = useSelector((state) => state.user.token);
+  const navigate = useNavigate();
+  console.log("Token is in User", token);
 
-  console.log("Token récupéré depuis Redux : ", token);
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/");
+    }
+  }, [token, navigate]);
+  if (!token) {
+    return null;
+  }
+
   return (
     <>
       <Header />
