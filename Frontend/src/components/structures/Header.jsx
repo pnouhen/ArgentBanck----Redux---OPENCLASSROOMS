@@ -2,10 +2,12 @@ import { useSelector } from "react-redux";
 import { clearToken } from "../../store/userSlice";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+
 import logo from "../../assets/img/argentBankLogo.webp";
 
 export default function Header() {
   const token = useSelector((state) => state.user.token);
+  const data = useSelector((state) => state.user.data)
   const dispatch = useDispatch();
 
   function SignOut() {
@@ -32,7 +34,7 @@ export default function Header() {
         <div className="main-nav">
         <NavLink to="/user" className="main-nav main-nav-item">
           <i className="fa fa-user-circle"></i>
-          <p>Tony</p>
+          <p>{data?.userName}</p>
         </NavLink>
         <NavLink to="/" className="main-nav main-nav-item" onClick={SignOut}>
           <i className="fa fa-sign-out"></i>

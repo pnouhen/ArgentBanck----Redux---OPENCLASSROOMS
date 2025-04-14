@@ -15,8 +15,8 @@ export const userSlice = createSlice({
     clearToken: (state) => {
       state.token = null;
     },
-    setData: (state) =>{
-      state.data = null
+    setData: (state, action) =>{
+      state.data = action.payload
     }
   },
 });

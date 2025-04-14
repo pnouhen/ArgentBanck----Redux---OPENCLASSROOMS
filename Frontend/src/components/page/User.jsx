@@ -11,10 +11,10 @@ import Footer from "../structures/Footer";
 
 export default function User() {
   const token = useSelector((state) => state.user.token);
+  const data = useSelector((state) => state.user.data)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const [respdata, setRespData] = useState(null);
 
   useEffect(() => {
     if (!token) {
@@ -25,7 +25,7 @@ export default function User() {
           const response = await fetch(
             "http://localhost:3001/api/v1/user/profile",
             {
-              method: "PUT",
+              method: "GET",
               headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
@@ -35,9 +35,8 @@ export default function User() {
           );
 
           if (response.ok) {
-            const data = await response.json();
-            dispatch(setData(data.body));
-            setRespData(data.body);
+            const respdata = await response.json();
+            dispatch(setData(respdata.body));
           } else {
             console.error("Erreur HTTP", response.status);
           }
@@ -50,10 +49,11 @@ export default function User() {
     }
   }, [token, dispatch, navigate]);
   if (!token) return null;
+
   return (
     <>
       <Header />
-      {respdata ? (
+      {data ? (
         <main className="main bg-dark">
           <div className="header">
             {open == false ? (
@@ -61,7 +61,7 @@ export default function User() {
                 <h1>
                   Welcome back
                   <br />
-                  {respdata.userName} !
+                  {data.userName} !
                 </h1>
                 <button className="edit-button" onClick={() => setOpen(!open)}>
                   Edit Name
@@ -71,8 +71,9 @@ export default function User() {
               <EditName
                 open={open}
                 setOpen={setOpen}
-                firstName={respdata.firstName}
-                lastName={respdata.lastName}
+                firstName={data.firstName}
+                lastName={data.lastName}
+                userName={data.userName}
               />
             )}
           </div>
