@@ -1,4 +1,4 @@
-export default function EditName({open, setOpen}){
+export default function EditName({open, setOpen, firstName, lastName}){
     return (
       <div className={open ? "editName" : "displayNone"}>
         <h2>Edit user info</h2>
@@ -9,11 +9,11 @@ export default function EditName({open, setOpen}){
           </div>
           <div className="firstName">
             <label htmlFor="firstName">First name :</label>
-            <input type="text" value="Tony" disabled/>
+            <input type="text" id="firstName" value={firstName} disabled/>
           </div>
           <div className="lastName">
             <label htmlFor="lastName">Last name :</label>
-            <input type="text" value="Stark" disabled/>
+            <input type="text" id="lastName" value={lastName} disabled/>
           </div>
         </form>
         <button className="edit-button" onClick={() => setOpen(!open)}>Save</button>
@@ -21,3 +21,6 @@ export default function EditName({open, setOpen}){
       </div>
     );
 }
+
+// appeler setdata json
+
