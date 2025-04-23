@@ -15,7 +15,8 @@ export default function EditName({ open, setOpen, firstName, lastName, userName 
   };
 
   const handleSave = async () => {
-    const updatedUserName = newUserName; // Utilise l'état local pour la nouvelle valeur du userName
+    const updatedUserName = newUserName;
+    if (!updatedUserName) return; // Bloque la sauvegarde si vide
     try {
       const response = await fetch(
         "http://localhost:3001/api/v1/user/profile",
