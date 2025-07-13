@@ -3,11 +3,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import {store} from './store/store'; 
 
-import Index from "./components/page/Index";
-import SignIn from "./components/page/SignIn";
-import User from "./components/page/User";
+import Index from "./pages/Index";
+import SignIn from "./pages/SignIn";
+import User from "./pages/User";
 
-import "./assets/style/main.css";
+import "./style/main.css";
 
 const router = createBrowserRouter([
   {
